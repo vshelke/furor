@@ -28,7 +28,6 @@ def index(request):
         data = Entry.objects.filter(user=request.user.id).order_by('-id')
         return render(request, "remember/dashboard.html", {'data' : data, 'form': form})
 
-
 def completed(request, id, option):
     if request.user.is_authenticated:
         e = Entry.objects.get(pk=id, user=request.user.id)
