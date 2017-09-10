@@ -1,0 +1,45 @@
+{% extends 'remember/index.html'%} {% block body %}
+<br>
+<div class="columns">
+{% for i in data %}
+    {% if forloop.counter0|divisibleby:3 %}
+        </div>
+        <div class="columns">
+    {% endif %}
+    <div class="column">
+
+        <div class="card">
+
+            <div class="card-content">
+
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="{{i.img}}" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">{{i.name}}</p>
+                        <p class="subtitle is-6"><a href="/tag/{{i.tag}}"><span class="tag">{{i.tag}}</span></a></p>
+                    </div>
+                </div>
+                <div class="content">
+                    {{i.desc|slice:":100"}} <a href="{{i.link}}" target="_blank">more</a>
+                </div>
+            </div>
+            <footer class="card-footer">
+                <a href="{{i.link}}" class="card-footer-item">Open</a>
+                {% if i.completed %}
+                    <a href="/cmp/{{i.id}}/0/" class="card-footer-item" style="background-color: #00D1B2;color:#FFFFFF;">Not Complete</a>
+                {% else %}
+                    <a href="/cmp/{{i.id}}/1/" class="card-footer-item">Complete</a>
+                {% endif %}
+            </footer>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
