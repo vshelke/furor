@@ -32,8 +32,11 @@ def index(request):
 def completed(request, id, option):
     if request.user.is_authenticated:
         e = Entry.objects.get(pk=id, user=request.user.id)
-        e.completed = option
-        e.save()
+        if option == '2':
+            e.delete()
+        else:
+            e.completed = option
+            e.save()
     return HttpResponseRedirect('/')
 
 def tag(request, tag):

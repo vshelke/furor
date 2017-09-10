@@ -10,22 +10,39 @@
 </head>
 
 <body>
+
     <div class="container">
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
-                    To-<b>Doer</b>
+                    To-<strong>Doer</strong>
                 </a>
+                <p class="navbar-item" style="font-size:12px;padding-top:15px;">
+                    A minimal To-Do app
+                </p>
                 <button class="button navbar-burger">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
             </div>
+
             <div class="navbar-end">
                 {% if user.is_authenticated %}
-                <div class="navbar-item is-active">
-                    <a class="button is-dark modal-button" data-target="add-mem" onclick="document.getElementById('add-mem').className = 'modal is-active';">Add Memory!</a>
+                <div class="navbar-item">
+                    <div class="field has-addons">
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Find tag">
+                        </p>
+                        <p class="control">
+                            <button class="button">
+                                Search
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <a class="button is-primary modal-button" data-target="add-mem" onclick="document.getElementById('add-mem').className = 'modal is-active';">Add Memory!</a>
                 </div>
                 <div class="navbar-item">
                     <a href="/logout/" class="button is-info">Logout!</a>
@@ -33,9 +50,7 @@
                 {% endif %}
             </div>
         </nav>
-        <br>
-        {% block body %}
-        {% endblock %}
+        <br> {% block body %} {% endblock %}
     </div>
     {% if user.is_authenticated %}
     <div id="add-mem" class="modal">
@@ -82,6 +97,22 @@
         <button class="modal-close is-large" aria-label="close" onclick="document.getElementById('add-mem').className = 'modal';"></button>
     </div>
     {% endif %}
+    <br>
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>ToDoer</strong> by <a href="http://vshelke.me">Vaibhav Shelke</a>. The source code is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+                </p>
+                <p>
+                    <a class="icon" href="https://github.com/vshelke/todoer">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

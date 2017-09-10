@@ -5,10 +5,11 @@
 <div class="columns">
     <div class="column" style="text-align: center;">
         <div class="box">
-            <img src="https://i.pinimg.com/736x/8c/80/c9/8c80c9bae39917586246a23cf5fb18c4--real-quotes-music-quotes.jpg" class="img-thumbnail">
+            <img src="https://unsplash.it/650/705/?random" class="img-thumbnail">
         </div>
     </div>
     <div class="column">
+        <div class="box">
         <h3>Login</h3><br>
         <form method="post" action="/login/">
             {% csrf_token %}
@@ -28,7 +29,9 @@
                 </div>
             </div>
         </form>
-        <hr>
+        </div>
+
+        <div class="box">
         <h3>Signup</h3><br>
         <form method="post" action="/signup/">
             {% csrf_token %}
@@ -65,10 +68,11 @@
             </div>
             <div class="field">
                 <div class="control">
-                    <button class="button is-warning" type="Submit" name="Submit" value="Submit">Signup</button>
+                    <button class="button is-info" type="Submit" name="Submit" value="Submit">Signup</button>
                 </div>
             </div>
         </form>
+    </div>
     </div>
 </div>
 
