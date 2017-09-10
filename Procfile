@@ -1,1 +1,1 @@
-web: gunicorn techscan.wsgi --log-file -
+web: gunicorn todoer.wsgi --log-file -
