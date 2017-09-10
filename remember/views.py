@@ -20,7 +20,7 @@ def index(request):
             tag = form.cleaned_data['tag']
             desc = form.cleaned_data['desc']
             img = "http://logo.clearbit.com/" + urlparse(link).hostname + "?size=48"
-            e = Entry(name=name, img=img, desc=desc, link=link, tag=tag, completed=0, user=request.user.id)
+            e = Entry(name=name, img=img, desc=desc, link=link, tag=tag, completed=0, user=request.user)
             e.save()
             return HttpResponseRedirect('/')
     else:
