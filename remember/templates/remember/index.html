@@ -16,8 +16,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
-                    <img src="https://vectr.com/vshelke/eFPDIgYMx.png">
-                    <!-- To-<strong>Doer</strong> -->
+                    To-<strong>Doer</strong>
                 </a>
                 <p class="navbar-item" style="font-size:12px;padding-top:15px;">
                     A minimal To-Do app
@@ -52,7 +51,38 @@
                 {% endif %}
             </div>
         </nav>
-        <br> {% block body %} {% endblock %}
+        {% if user.is_authenticated %}
+        <div class="tabs is-toggle is-centered">
+          <ul>
+            <li class="is-active">
+              <a href="/">
+                <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
+                <span>Notes</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pomodoro/">
+                <span class="icon is-small"><i class="fa fa-clock-o"></i></span>
+                <span>Pomodoro</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon is-small"><i class="fa fa-calendar"></i></span>
+                <span>10/10/10</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon is-small"><i class="fa fa-th-large"></i></span>
+                <span>The Matrix</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        {% endif %}
+
+        {% block body %} {% endblock %}
     </div>
     {% if user.is_authenticated %}
     <div id="add-mem" class="modal">

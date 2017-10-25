@@ -28,6 +28,13 @@ def index(request):
         data = Entry.objects.filter(user=request.user.id).order_by('-id')
         return render(request, "remember/dashboard.html", {'data' : data, 'form': form})
 
+def pomodoro(request):
+    if not request.user.is_authenticated:
+        form_login = LoginForm()
+        form_signup = SignupForm()
+        return render(request, 'remember/main.html', {'f_login': form_login, 'f_signup': form_signup})
+    return render(request, 'remember/pomodoro.html')
+
 def completed(request, id, option):
     if request.user.is_authenticated:
         e = Entry.objects.get(pk=id, user=request.user.id)
@@ -46,6 +53,9 @@ def tag(request, tag):
     else:
         return HttpResponse("Invalid Request!")
 
+
+# user details
+
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -63,10 +73,8 @@ def signup(request):
                 return HttpResponseRedirect('/')
             else:
                 return HttpResponse("Error Occured!")
-
     if request.user.is_authenticated:
         return HttpResponseRedirect('/')
-
     form_login = LoginForm()
     form_signup = SignupForm()
     return render(request, 'remember/main.html', {'f_login': form_login, 'f_signup': form_signup})
